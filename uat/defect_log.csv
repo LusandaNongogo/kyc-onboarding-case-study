@@ -1,0 +1,11 @@
+defect_id,test_id,title,severity,priority,type,steps_to_reproduce,expected,actual,status,owner
+DEF-01,TC-05,Date of birth not checked against ID number,Low,Medium,Bug,Enter ID 950312... and DOB 13 March 1995,Inline mismatch message,Form accepts the date,Fixed and retested,Engineering
+DEF-02,TC-08,Name mismatch declines instead of routing to review,High,High,Bug,Submit sandbox identity A with surname changed,"Manual review, reason Name mismatch",Application declined,Fixed and retested,Engineering
+DEF-03,TC-09,Vendor timeout loses the application,Critical,High,Bug,Set sandbox delay to 45 seconds; submit,Queued for retry with status message,Generic error after 2 minutes; application not saved,Open,Engineering
+DEF-04,TC-12,Camera preview freezes on low end Android over 3G,High,High,Bug,"Entry level Android, throttle to 3G, start liveness",Liveness completes within 60 seconds,Preview froze on 3 of 5 attempts,Open,Engineering and vendor
+DEF-05,TC-17,Beneficial ownership under 100% accepted,High,High,Bug,Declare owners at 50% and 30%; tap Continue,Blocked until remainder explained,Continue allowed,Fixed and retested,Engineering
+DEF-06,TC-20,Decline SMS reveals sanctions screening,Critical,High,Bug,Confirm sanctions match on a test case,Generic decline message,SMS says application failed sanctions screening,Fixed and retested,Engineering and Compliance
+DEF-07,TC-21,Sanctions screening matches on name only,Medium,High,Configuration,Onboard Thabo Mokoena with DOB not on list entry,No match when DOB and ID differ,Possible match raised,Open,Compliance and vendor
+DEF-08,TC-23,Senior management approval workflow missing from UAT,High,High,Environment,Onboard sandbox foreign official,Approval step shown,Step missing; test blocked,Open,DevOps
+DEF-09,TC-27,Risk tier boundary uses greater than instead of greater or equal,Medium,Medium,Bug,Create applicant scoring exactly 1.60,Tier Medium,Tier Low,Fixed and retested,Engineering
+DEF-10,TC-32,Resume does not keep verified ID,Low,Medium,Usability,Stop at selfie step; log in 10 days later,Resume at selfie,Asked to re-enter ID,Deferred to next release,Product

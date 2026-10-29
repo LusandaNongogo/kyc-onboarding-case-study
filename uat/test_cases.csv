@@ -1,0 +1,36 @@
+test_id,story,requirement,scenario,preconditions,steps,expected_result,priority,status,actual_result,defect_id,retest_result
+TC-01,US-01,BR-01,Valid OTP,"New number, not registered",Enter number; enter OTP within 5 minutes,Consent screen shown,High,Pass,As expected,,
+TC-02,US-01,BR-01,Expired OTP,OTP sent 6 minutes ago,Enter expired OTP,"Message: code expired, option to resend",Medium,Pass,As expected,,
+TC-03,US-01,BR-08,Consent declined,On consent screen,Tap Decline,No verification call; onboarding stops with explanation,High,Pass,As expected; vendor log shows no call,,
+TC-04,US-02,BR-02,Invalid check digit,Consent given,Enter ID 9503125800086,Inline error; no Home Affairs call,High,Pass,As expected,,
+TC-05,US-02,BR-02,DOB does not match ID,Consent given,Enter ID starting 950312 and DOB 13 March 1995,Mismatch message shown,Medium,Fail,Form accepted the mismatched date of birth,DEF-01,Pass
+TC-06,US-03,BR-03,Full Home Affairs match,Test identity A from vendor sandbox,Submit details,Moves to selfie step,High,Pass,As expected,,
+TC-07,US-03,BR-04,Deceased status,Test identity B (deceased) from sandbox,Submit details,Declined with general message and support number,High,Pass,As expected,,
+TC-08,US-03,BR-03,Surname mismatch,Test identity A with changed surname,Submit details,"Manual review, reason Name mismatch",High,Fail,Application declined instead of routed to review,DEF-02,Pass
+TC-09,US-03,NFR-05,Vendor timeout,Sandbox set to 45 second delay,Submit details,Queued for retry; customer sees still checking message,High,Fail,Spinner for 2 minutes then generic error; application lost,DEF-03,Not retested
+TC-10,US-04,BR-05,Liveness pass and face match,"Test identity A, live person",Complete liveness,Moves to screening,High,Pass,As expected,,
+TC-11,US-04,BR-06,Three failed liveness attempts,Photo held up to camera,Fail liveness three times,"Manual review, reason Liveness failed, customer told one working day",High,Pass,As expected,,
+TC-12,US-04,NFR-03,Liveness on low end device,"Entry level Android phone, 3G",Complete liveness,Completes within 60 seconds,Medium,Fail,Camera preview froze on 3 of 5 attempts,DEF-04,Not retested
+TC-13,US-05,BR-09,"Active company, applicant is director",Sandbox company 2019/123456/07,Enter registration number,Moves to beneficial owner step,High,Pass,As expected,,
+TC-14,US-05,BR-09,Deregistered company,Sandbox company 2015/654321/07 (deregistered),Enter registration number,Declined with reason,High,Pass,As expected,,
+TC-15,US-05,BR-10,Applicant not a director,"Sandbox company, applicant not listed",Enter registration number,Mandate upload requested; manual review,High,Pass,As expected,,
+TC-16,US-06,BR-11,Ownership totals 100%,Two owners at 60% and 40%,Declare owners,Both receive verification links and are screened,High,Pass,As expected,,
+TC-17,US-06,BR-11,Ownership under 100%,Owners declared at 50% and 30%,Declare owners; tap Continue,Blocked until remaining 20% explained,High,Fail,Continue allowed with 80% declared,DEF-05,Pass
+TC-18,US-06,BR-11,Owner below 5%,Owners at 96% and 4%,Declare owners,Only the 96% owner verified,Low,Pass,As expected,,
+TC-19,US-07,BR-15,Possible sanctions match,Sandbox name on test sanctions list,Complete onboarding,Blocked; in compliance queue; customer sees generic message,High,Pass,As expected,,
+TC-20,US-07,BR-15,Confirmed sanctions match,Case from TC-19,Analyst confirms match,"Declined, escalated to MLRO, no reason to customer",High,Fail,Decline SMS included the words sanctions screening,DEF-06,Pass
+TC-21,US-07,BR-14,Common name false match,"Customer named Thabo Mokoena, DOB differs from list entry",Complete onboarding,No match raised when DOB and ID differ,Medium,Fail,Possible match raised on name alone,DEF-07,Not retested
+TC-22,US-08,BR-16,Domestic PEP,Sandbox domestic prominent person,Complete onboarding,Tier High; source of funds requested,High,Pass,As expected,,
+TC-23,US-08,BR-16,Foreign official,Sandbox foreign official,Complete onboarding,Senior management approval required,High,Blocked,Approval workflow not deployed to UAT environment,DEF-08,Not retested
+TC-24,US-09,BR-19,Low risk auto approval,"Salaried, app, all checks pass",Complete onboarding,Approved; limits R25 000,High,Pass,As expected,,
+TC-25,US-09,BR-17,Medium risk sole proprietor,"Spaza owner, WhatsApp, R60 000 turnover",Complete onboarding,"Score 1.80, tier Medium, approved",High,Pass,Score 1.80 shown in admin view,,
+TC-26,US-09,BR-17,High risk company,"Second hand goods, R400 000, holding company owner",Complete onboarding,"Score 2.50, tier High, manual review",High,Pass,As expected,,
+TC-27,US-09,BR-18,Score on tier boundary,Factors giving exactly 1.60,Complete onboarding,Tier Medium,Medium,Fail,Tier shown as Low; boundary uses greater than instead of greater or equal,DEF-09,Pass
+TC-28,US-10,BR-21,Queue shows reason and timer,Case in review queue,Open case,"Reason, evidence and time in queue shown",Medium,Pass,As expected,,
+TC-29,US-10,BR-22,Four eyes rule,Reviewer submitted the application,Try to approve,Approve disabled,High,Pass,As expected,,
+TC-30,US-10,BR-22,Decision reason required,Case open,Approve without reason,Save blocked until reason chosen,Medium,Pass,As expected,,
+TC-31,US-11,BR-23,Audit history complete,Approved application from TC-24,Open audit history,"All calls, results, decisions, users and timestamps in order",High,Pass,As expected,,
+TC-32,US-12,BR-24,Resume after 10 days,Stopped at selfie step 10 days ago,Log in,Resume at selfie step,Medium,Fail,Asked to re-enter ID number,DEF-10,Not retested
+TC-33,US-12,BR-24,Resume after 31 days,Stopped 31 days ago,Log in,"Start again, message explains why",Low,Pass,As expected,,
+TC-34,US-09,BR-13,Business profile captured,Sole proprietor applicant,Complete business profile without turnover,Cannot continue until nature of business and expected turnover are entered,Medium,Pass,As expected,,
+TC-35,US-07,BR-20,Customer messaging on failure,"Applications failing Home Affairs, liveness and screening",Review every customer facing message,"Each gives a next step; none mentions screening, sanctions or PEP",High,Pass,"Checked 14 messages in English, isiZulu and isiXhosa",,
