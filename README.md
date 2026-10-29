@@ -1,5 +1,7 @@
 # KYC And KYB Onboarding: Business Analysis Case Study
 
+[![Tests](https://github.com/LusandaNongogo/kyc-onboarding-case-study/actions/workflows/tests.yml/badge.svg)](https://github.com/LusandaNongogo/kyc-onboarding-case-study/actions/workflows/tests.yml)
+
 A complete business analysis and UAT pack for redesigning customer and business onboarding at **Kasi Wallet, a fictional South African payments app**. It takes the work from problem to sign off: requirements, process maps, risk rating, user stories, test cases, defects and a go or no go recommendation.
 
 The company and all test data are made up. The regulatory context (FICA, sanctions screening, prominent persons, beneficial ownership, POPIA) is real.
