@@ -58,11 +58,11 @@ As an accountable institution under the Financial Intelligence Centre Act (FICA)
 - **FICA and the RMCP.** Kasi Wallet must follow its Risk Management and Compliance Programme, which sets out how it identifies, verifies and risk rates customers. FICA takes a risk based approach, so verification can be lighter for low risk customers and must be enhanced for high risk ones.
 - **Targeted financial sanctions.** Every customer and, for businesses, every director and beneficial owner must be screened against the sanctions lists published by the Financial Intelligence Centre before the relationship starts.
 - **Prominent persons.** FICA requires extra checks for domestic prominent influential persons and foreign prominent public officials, their family members and close associates. Foreign officials require senior management approval.
-- **Beneficial ownership.** For companies, the natural persons who own or control the business must be identified. The design uses 5% ownership, in line with the CIPC beneficial ownership register.
+- **Beneficial ownership.** Section 21B of FICA requires the natural persons who own or control a legal person to be identified but sets no percentage. FIC Public Compliance Communication 59 (August 2024) strongly recommends identifying anyone with 5% or more, replacing the earlier 25% figure, and 5% is also the CIPC filing threshold under the Companies Act. The design uses 5% to align with both.
 - **POPIA.** Only the personal information needed for onboarding is collected, consent is captured, and ID images and biometrics are stored securely with defined retention.
 - **Record keeping.** Records of identification and verification must be kept for at least five years after the relationship ends.
 
-Regulatory references should be confirmed with the MLRO against the current RMCP and FIC guidance before build.
+The MLRO signs off that these controls match the RMCP before build.
 
 ## 6. Business Requirements
 
